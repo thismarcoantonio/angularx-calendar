@@ -1,0 +1,40 @@
+.ngx-calendar {
+  display: flex;
+  flex-direction: column;
+}
+.ngx-calendar__display {
+  text-align: center;
+  padding: 10px;
+  background: #ebe7e5;
+}
+.ngx-calendar__container {
+  display: flex;
+  flex-direction: column;
+}
+.ngx-calendar__row {
+  display: flex;
+}
+.ngx-calendar__cell {
+  width: 50px;
+  height: 150px;
+  flex: 1;
+  border: 1px solid #ebe7eb;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.event {
+  padding: 10px;
+  cursor: move;
+  background-color: #2196F3;
+  color: #fff;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}

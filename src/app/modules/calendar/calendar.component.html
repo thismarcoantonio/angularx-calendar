@@ -1,0 +1,20 @@
+<ul>
+  <li *ngFor="let item of ['item', 'item', 'item', 'item']; let i = index;" class="event" appEvent>{{ item + i }}</li>
+</ul>
+
+<div class="ngx-calendar">
+
+  <div class="ngx-calendar__display">
+    <button (click)="switchMonth(false)"><</button>
+
+    <span>{{ label }}</span>
+    
+    <button (click)="switchMonth(true)">></button>
+  </div>
+
+  <div class="ngx-calendar__container">
+    <div *ngFor="let month of calendar" class="ngx-calendar__row">
+      <div *ngFor="let day of month" class="ngx-calendar__cell">{{ day }}</div>
+    </div>
+  </div>
+</div>
