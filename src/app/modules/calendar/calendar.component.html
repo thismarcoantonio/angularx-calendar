@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of ['item', 'item', 'item', 'item']; let i = index;" class="event" appEvent>{{ item + i }}</li>
+  <li *ngFor="let item of events; let i = index" class="event" [calendarDrag]="item">{{ item.nome }}</li>
 </ul>
 
 <div class="ngx-calendar">
@@ -14,7 +14,12 @@
 
   <div class="ngx-calendar__container">
     <div *ngFor="let month of calendar" class="ngx-calendar__row">
-      <div *ngFor="let day of month" class="ngx-calendar__cell">{{ day }}</div>
+      <div *ngFor="let day of month" class="ngx-calendar__cell" [calendarDrop]="day?.events">
+        {{ day?.day }}
+        <ul>
+          <li *ngFor="let event of day?.events">{{eventList[event]}}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
