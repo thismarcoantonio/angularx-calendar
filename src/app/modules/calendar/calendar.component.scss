@@ -1,0 +1,149 @@
+// Variables
+$border-color: #d8d8d8;
+
+// Mixins
+@mixin borderCollapse {
+  box-shadow: 1px 0 0 0 $border-color, 0 1px 0 0 $border-color, 1px 1px 0 0 $border-color, 1px 0 0 0 $border-color inset, 0 1px 0 0 $border-color inset;
+}
+
+// Classes
+.full-container {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+}
+
+.event-list {
+  padding: 10px;
+  list-style: none;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  margin-right: 15px;
+
+  @at-root {
+    &__item {
+      max-width: 265px;
+      cursor: move;
+      width: 265px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      padding: 0 125px 0 10px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      background-color: #2196F3;
+      color: #FFFFFF;
+      text-align: right;
+      font-weight: bold;
+      user-select: none;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.ngx-calendar {
+  display: flex;
+  flex-direction: column;
+  border-radius: .25rem;
+  background-color: #fff;
+  color: #575962;
+  flex: 1;
+  max-width: 992px;
+
+  @at-root {
+    &__header {
+      text-align: center;
+      padding: 10px 0;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+    }
+    &__btn-group {
+      display: flex;
+    }
+    &__btn {
+      cursor: pointer;
+      outline: none;
+      background-color: $border-color;
+      border: 0;
+      padding: 5px 15px;
+      margin: 0;
+      transition: background-color .3s ease;
+      &:hover {
+        background-color: $border-color - 20;
+      }
+      &:first-child {
+        border-radius: 3px 0 0 3px;
+      }
+      &:last-child {
+        border-radius: 0 3px 3px 0;
+      }
+    }
+    &__label {
+      flex: 1;
+      margin: 10px;
+    }
+    &__week-view {
+      display: flex;
+    }
+    &__week-day {
+      font-weight: bold;
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      @include borderCollapse;
+    }
+    &__container {
+      display: flex;
+      flex-direction: column;
+    }
+    &__row {
+      display: flex;
+    }
+    &__cell {
+      position: relative;
+      width: 50%;
+      @include borderCollapse;
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+    }
+    &__cell-element {
+      position: absolute;
+      top: 0px;
+      display: flex;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-direction: column;
+    }
+    &__indicator {
+      padding: 10px;
+    }
+    &__group-event {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: flex-end;
+      width: 100%;
+      padding: 10px;
+    }
+    &__group-item {
+      cursor: move;
+      background: #2196F3;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: .9em;
+      position: relative;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+}

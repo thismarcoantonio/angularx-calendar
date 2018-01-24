@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core'
 @Component({
   selector: 'ngx-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
   label = "January 2018"
   months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   cache = {}
   calendar = []
   events = [
@@ -114,17 +115,15 @@ export class CalendarComponent implements OnInit {
     if (calendar[5]) {
       for (i = 0; i < calendar[5].length; i++) {
         if (calendar[5][i] !== "") {
-          calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>"
+          console.log(calendar)
+          calendar[4][i].day = calendar[4][i].day + '' + calendar[5][i].day
         }
       }
       calendar = calendar.slice(0, 5)
     }
 
     this.cache[year][month] = { calendar, label: this.months[month] + " " + year }
-
     this.label = this.months[month] + " " + year
-
-    console.log(this.cache[year][month])
 
     return this.cache[year][month]
 
