@@ -22,7 +22,6 @@
         <div *ngFor="let day of month" class="ngx-calendar__cell" [calendarDrop]="day?.events" (removeAfterDrop)="removeAfterDropHandle($event)">
           <div class="ngx-calendar__cell-element">
             <span class="ngx-calendar__indicator">{{ day?.day }}</span>
-            <div>{{day?.events}}</div>
             <ul class="ngx-calendar__group-event">
               <li *ngFor="let event of day?.events" class="ngx-calendar__group-item" [calendarDrag]="event" [fromWhere]="day?.events">
                 {{eventList[event]}}
