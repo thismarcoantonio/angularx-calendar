@@ -19,7 +19,6 @@
     "@angular/platform-browser-dynamic": "^5.2.1",
     "@angular/router": "^5.2.1",
     "core-js": "^2.4.1",
-    "ng2-dnd": "^5.0.2",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
@@ -27,7 +26,9 @@
     "@angular/cli": "^1.6.5",
     "@angular/compiler-cli": "^5.2.1",
     "@angular/language-service": "^5.2.1",
+    "codelyzer": "^4.1.0",
     "ng-packagr": "^1.6.0",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2"
   }
 }
