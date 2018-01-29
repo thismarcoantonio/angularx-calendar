@@ -6,52 +6,40 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  label = "January 2018"
-  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  label = 'January 2018'
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   cache = {}
   calendar = []
-  events = [
-    {
-      "_id": "123",
-      "nome": "luisa"
-    },
-    {
-      "_id": "1234",
-      "nome": "lucas"
-    },
-    {
-      "_id": "12345",
-      "nome": "Gilmar"
-    }
-  ]
+  events = []
   eventList = {
-    "123": "Luisa",
-    "1234": "Lucas",
-    "12345": "Gilmar"
+    '123': 'Luisa',
+    '1234': 'Lucas',
+    '12345': 'Gilmar'
   }
-
-
-  constructor() { }
 
   ngOnInit() {
     this.switchMonth(null, new Date().getMonth(), new Date().getFullYear())
+
+    Object.keys(this.eventList).map(event => this.events.push({
+      id: event,
+      name: this.eventList[event]
+    }))
   }
 
   switchMonth(next, month, year) {
-    const curr = this.label.trim().split(" ")
+    const curr = this.label.trim().split(' ')
     const tempYear = parseInt(curr[1], 10)
-    let calendar
 
     if ((isNaN(month) || month === null || month === undefined)) {
       if (next) {
-        if (curr[0] === "December") {
+        if (curr[0] === 'December') {
           month = 0
         } else {
           month = this.months.indexOf(curr[0]) + 1
         }
       } else {
-        if (curr[0] === "January") {
+        if (curr[0] === 'January') {
           month = 11
         } else {
           month = this.months.indexOf(curr[0]) - 1
@@ -78,12 +66,12 @@ export class CalendarComponent implements OnInit {
     let j
     let haveDays = true
     let startDay = new Date(year, month, day).getDay()
-    let daysInMonths = [31, (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     let calendar = []
+    const daysInMonths = [31, (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     if (this.cache[year]) {
       if (this.cache[year][month]) {
-        this.label = this.months[month] + " " + year
+        this.label = this.months[month] + ' ' + year
         return this.cache[year][month]
       }
     } else {
@@ -102,7 +90,7 @@ export class CalendarComponent implements OnInit {
         } else if (day <= daysInMonths[month]) {
           calendar[i][j] = { events: [], day: day++}
         } else {
-          calendar[i][j] = { events: [], day: ""}
+          calendar[i][j] = { events: [], day: ''}
           haveDays = false
         }
         if (day > daysInMonths[month]) {
@@ -114,18 +102,22 @@ export class CalendarComponent implements OnInit {
 
     if (calendar[5]) {
       for (i = 0; i < calendar[5].length; i++) {
-        if (calendar[5][i] !== "") {
-          console.log(calendar)
+        if (calendar[5][i] !== '') {
           calendar[4][i].day = calendar[4][i].day + '' + calendar[5][i].day
         }
       }
       calendar = calendar.slice(0, 5)
     }
 
-    this.cache[year][month] = { calendar, label: this.months[month] + " " + year }
-    this.label = this.months[month] + " " + year
+    this.cache[year][month] = { calendar, label: this.months[month] + ' ' + year }
+    this.label = this.months[month] + ' ' + year
 
     return this.cache[year][month]
 
+  }
+  delete(fromWhere, event) {
+    const index = fromWhere.indexOf(event)
+
+    fromWhere.splice(index, 1)
   }
 }

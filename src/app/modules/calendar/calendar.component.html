@@ -1,7 +1,6 @@
 <div class="full-container">
-
   <ul class="event-list">
-    <li class="event-list__item" *ngFor="let item of events" [calendarDrag]="item._id">{{ item.nome }}</li>
+    <li class="event-list__item" *ngFor="let item of events" [calendarDrag]="item.id">{{ item.name }}</li>
   </ul>
   
   <div class="ngx-calendar">
@@ -23,9 +22,12 @@
         <div *ngFor="let day of month" class="ngx-calendar__cell" [calendarDrop]="day?.events">
           <div class="ngx-calendar__cell-element">
             <span class="ngx-calendar__indicator">{{ day?.day }}</span>
-            
+            <div>{{day?.events}}</div>
             <ul class="ngx-calendar__group-event">
-              <li *ngFor="let event of day?.events" class="ngx-calendar__group-item" [calendarDrag]="event">{{eventList[event]}}</li>
+              <li *ngFor="let event of day?.events" class="ngx-calendar__group-item" [calendarDrag]="event" [fromWhere]="day?.events">
+                {{eventList[event]}}
+                <button (click)="delete(day?.events, event)" class="ngx-calendar__group-item-trash"></button>
+              </li>
             </ul>
           </div>
         </div>
