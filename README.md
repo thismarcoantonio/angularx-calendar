@@ -13,4 +13,5 @@ Angular 5.x Calendar, currently in develop.
 - [ ] - Insert event in another cell
 - [ ] - Better Documentation and organization
 - [ ] - Publish in NPM
+- [ ] - Responsive UI
 - [ ] - Custom Styles
