@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 
 @Component({
   selector: 'ngx-calendar',
@@ -6,23 +6,25 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  label = 'January 2018'
+  @Input() removeAfterDrop
+
+  label = 'January 2018';
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   cache = {}
   calendar = []
   events = []
   eventList = {
-    '123': 'Luisa',
-    '1234': 'Lucas',
-    '12345': 'Gilmar'
+    123: 'Luisa',
+    1234: 'Lucas',
+    12345: 'Gilmar'
   }
 
   ngOnInit() {
     this.switchMonth(null, new Date().getMonth(), new Date().getFullYear())
 
     Object.keys(this.eventList).map(event => this.events.push({
-      id: event,
+      id: parseInt(event, 10),
       name: this.eventList[event]
     }))
   }
@@ -115,9 +117,17 @@ export class CalendarComponent implements OnInit {
     return this.cache[year][month]
 
   }
-  delete(fromWhere, event) {
+  remove(fromWhere, event) {
     const index = fromWhere.indexOf(event)
 
     fromWhere.splice(index, 1)
+  }
+
+  removeAfterDropHandle(e) {
+    if (this.removeAfterDrop) {
+      const index = this.events.indexOf(this.events.filter(event => event.id === e)[0])
+
+      this.events.splice(index, 1)
+    }
   }
 }

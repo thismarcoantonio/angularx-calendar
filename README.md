@@ -7,6 +7,7 @@ Angular 5.x Calendar, currently in develop.
 - [x] - Add event system for the Calendar using Drag and Drop API
 - [x] - Style Calendar
 - [x] - Remove Event (and remove it from cell when passed to another)
+- [x] - Remove After Drop feature
 - [ ] - Multiple Event Handling
 - [ ] - Error Handling (Also provide option to deny add more than one equal entry)
 - [ ] - Custom Events (Because now you need to provide a list with event array containing every event id)

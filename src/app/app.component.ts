@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 @Component({
   selector: 'app-root',
   template: `
-    <ngx-calendar></ngx-calendar>
+    <ngx-calendar [removeAfterDrop]="true"></ngx-calendar>
   `,
   styles: []
 })
