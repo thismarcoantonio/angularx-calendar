@@ -1,7 +1,7 @@
 # AngularX-Calendar
 
 Angular 5.x Calendar, using Drag and Drop API, no jQuery.
-Currently in develop.
+Currently in development.
 
 ## How to use?
 First of all install it with npm using:
@@ -50,16 +50,17 @@ Use it if you want to remove the events when use it.
 This calendar is currently in development, but you can use it if you want to modify an object of events. You can do Pull Requests if you want to contribute, I'll try to document PR later.
 
 ## Next-steps
+- [ ] - Update to support Angular 6
 - [x] - Calendar Month Navigation
 - [x] - Add event system for the Calendar using Drag and Drop API
 - [x] - Style Calendar
 - [x] - Remove Event (and remove it from cell when passed to another)
 - [x] - Remove After Drop feature
+- [ ] - Better Documentation and organization
 - [ ] - Multiple Event Handling
 - [ ] - Error Handling (Also provide option to deny add more than one equal entry)
 - [ ] - Custom Events (Because now you need to provide a list with event array containing every event id)
 - [ ] - Insert event in another cell
-- [ ] - Better Documentation and organization
 - [ ] - Publish in NPM
 - [ ] - Responsive UI
 - [ ] - Custom Styles
